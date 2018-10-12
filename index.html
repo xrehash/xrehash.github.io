@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>onMark Todo Helper</title>
+  <link rel="stylesheet" href="lib/skeleton/normalize.css" />
+  <link rel="stylesheet" href="lib/font-awesome-4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="style.css" />
+  <script src="lib/knockout-3.4.2.js" defer></script>
+  <script src="script.js" type="module" defer></script>
+</head>
+<script id="thingTemplate" type="text/html">
+  <div class="thing" data-bind="css:{'marked':marked()}">
+      <h4 class="title" data-bind="text:Title"></h4>
+      <div class="action">
+      <i class="fa btn fa-angle-double-down" data-bind="click:$parent.makeListClick.bind($data,$parent), css:{'undisplayed':!(undefined == $data.Items)}"></i>
+      <i class="fa btn fa-inbox" data-bind="click:$parent.moveComplete.bind($data,$parent,$root), css:{'undisplayed':(undefined == $data.Items)}"></i>
+      <i class="fa fa-trash btn" data-bind="click: $parent.trashItem.bind($data,$parent)"></i>
+      <i class="fa btn" data-bind="click:playPauseClick, css:{'fa-play':(Status() != 'Done' && Status() != 'In-Progress'), 'fa-pause':(Status() != 'Done' && Status() != 'New' && Status() != 'Paused')}"></i>
+      <i class="fa btn" data-bind="click: completeItemClick,css:{'fa-square-o':(Status() != 'Done'), 'fa-check':(Status() == 'Done')}"></i>
+      <i class="fa fa-suitcase" data-bind="click:$parent.moveActivate.bind($data,$parent,$root)" aria-hidden="true"></i>
+      <i class="fa fa-pencil" data-bind="click:$parent.editClick.bind($data,$parent,$root)" aria-hidden="true"></i>
+      </div>
+      <hr />
+      <div class="description" data-bind="text:description"></div>
+      <p>Status:<span data-bind="text:Status"></span></p>
+      <div data-bind="if:$data.Items">
+          <div class="list" data-bind="template:{name:'thingTemplate',foreach:Items}">
+            </div>
+        <div><i class="fa fa-plus-circle btn" data-bind="click:promptItem"></i>
+        </div>
+      </div>
+    </div>
+
+</script>
+
+<script id="thingEditorTemplate" type="text/html">
+  <div class="dlgWrapper">
+    <div class="dlg" data-bind="with:tool">
+      <h5>Item Editor</h5>
+      <div class="bar">
+          <i class="fa fa-hdd-o fa-lg btn" data-bind="click:$parent.mark.completeAdd" ></i>
+        <i class="fa fa-trash fa-lg btn" data-bind="click:$parent.mark.cancelEdit"></i></div>
+        <div class="fieldBlock">
+      <label>Title <input name="title" data-bind="value:title" type="text" /></label>
+      <label>Description <textarea name="desc" data-bind="value:description"></textarea></label>
+        </div>
+      </div>
+  </div>
+</script>
+
+<body>
+  <header class="page_header">
+    <h1>onMark</h1>
+    <nav>
+      <!-- <h5>Navigation</h5> -->
+      <div><button class="btn" data-bind="click:addList"><i class="fa fa-plus-square" data-bind=""></i> New List</button>
+      </div>
+    </nav>
+  </header>
+  <main class="main">
+    <div id="editorNode">
+      <div data-bind="template  :{ name : 'thingEditorTemplate', if : showEditor, data : activeEditItem }"></div>
+    </div>
+    <div class="tbl" data-bind="foreach: Lists()">
+      <div>
+        <h3 class="title" data-bind="text:Title"></h3>
+        <div class="bar">
+          <i class="fa btn fa-inbox" data-bind="click:moveComplete.bind($data,$data,$root), css:{'undisplayed':(undefined == $data.Items)}"></i>
+          <i class="fa fa-hdd-o fa-lg btn" data-bind="click:$parent.saveList.bind($data,$parent)"></i>&nbsp;
+          <i class="fa fa-trash-o fa-lg btn" data-bind="click:$parent.removeList.bind($data,$parent)"></i>&nbsp;
+        </div>
+        <div class="description" data-bind="text:description"></div>
+        <p class="thingCreatedDate minimal">Created <span class="field" data-bind="text:created().toLocaleString()"></span>
+        </p>
+        <p class="thingStatus minimal">Status <span class="field" data-bind="text:Status"></span></p>
+        <div class="list" data-bind="template:{name:'thingTemplate',foreach:Items}">
+        </div>
+        <div><i class="fa fa-plus-square fa-lg btn" data-bind="click:promptItem.bind($data,$root)"></i></div>
+      </div>
+    </div>
+  </main>
+  <footer id="page_footer">footer here.</footer>
+  </div>
+
+</body>
+
+</html>

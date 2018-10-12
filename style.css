@@ -1,0 +1,203 @@
+﻿body {
+    background-color: rgb(224, 240, 236);
+    font-size: 16pt;
+}
+
+header {
+    background-color: rgb(24, 40, 36);
+    color: rgb(245, 245, 245);
+    padding: 10px 5px;
+    margin: 1px 0px 5px 0px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin-top: 0;
+}
+
+.main .tbl {
+    margin: 10px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-column-gap: 25px;
+    grid-row-gap: 18px;
+}
+
+.tbl>* {
+    background-color: rgb(236, 236, 236);
+    padding: 5px;
+    border: 1px solid rgb(124, 140, 136);
+    border-radius: 4px;
+    box-shadow: 10px 5px 5px rgba(80, 80, 66, 0.3);
+}
+
+h3.title {
+    border-bottom: 1px solid rgb(124, 140, 136);
+    margin: 0;
+}
+
+.list {
+    margin: 10px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-column-gap: 25px;
+    grid-row-gap: 18px;
+}
+
+footer {
+    background-color: rgb(124, 140, 136);
+    padding: 10px 0px;
+    margin: 5px 0px;
+}
+
+button.btn {
+    cursor: hand;
+    color: rgb(245, 150, 42);
+    background-color: rgb(24, 14, 13);
+    font-family: sans-serif;
+
+    /* text-shadow: 1px 1px 2px rgb(180, 228, 46); */
+    border-color: rgb(245, 150, 42);
+    border-radius: 5px;
+}
+
+button.btn:hover {
+    border-color: aqua;
+}
+
+.thing {
+    border: 1px solid olivedrab;
+    border-radius: 3px;
+    padding: 2px;
+    font-size: 9pt;
+}
+
+.thing.marked {
+    background-color: brown;
+}
+
+.thing .title {
+    border-bottom: 1px dotted darkcyan;
+    margin: 0;
+    color: rgb(54, 71, 61);
+}
+
+.minimal {
+    font-size: 60%;
+    line-height: 150%;
+    padding: 0;
+    margin: 0;
+}
+
+.field {
+    font-weight: bold;
+    color: rgb(180, 90, 0);
+
+    /* border: 1px dotted rgb(205,202,240);
+                                        border-radius: 4px; */
+    padding: 5px;
+}
+
+.btn,
+.action i {
+    display: inline-block;
+    margin: 1px;
+    padding: 2px;
+    border-radius: 4px;
+    font-size: 12pt;
+}
+
+i.fa {
+    text-align: center;
+    cursor: pointer;
+}
+
+.removeListBtn {
+    text-align: right;
+    position: relative;
+    z-index: 2;
+    top: -65px;
+    right: 5px;
+}
+
+i.fa:hover {
+    color: rgb(183, 26, 223);
+}
+
+i.undisplayed {
+    display: none;
+}
+
+/* ..editor.. */
+
+#editorNode .dlgWrapper {
+    display: block;
+    position: absolute;
+    top: 20ex;
+    left: 10%;
+    width: 75%;
+    min-width: 300px;
+    height: 30ex;
+    background-color: rgb(231, 220, 220);
+    z-index: 100;
+    padding: 2px;
+}
+
+.dlg {
+    display: block;
+    /*position: fixed;*/
+    border: 2px outset whitesmoke;
+    border-radius: 8px;
+    background-color: wheat;
+    color: black;
+    padding: 8px;
+    margin: 0px;
+    /*width: 50%;*/
+    height: 100%;
+    min-width: 300px;
+}
+
+.dlg .bar {
+    text-align: right;
+    margin: 5px;
+    margin-top: -40px;
+    padding: 0;
+    float: right;
+    clear: none;
+}
+
+.dlg label {
+    font-size: 8pt;
+    color: gray;
+    text-transform: uppercase;
+}
+
+.dlg input,
+.dlg textarea {
+    font-size: 20pt;
+    font-weight: 300;
+    padding: 5px;
+    border-width: 1pt;
+    border-style: inset;
+    border-radius: 5px;
+    color: rgb(240, 240, 240);
+    background-color: black;
+    display: block;
+    width: 100%;
+}
+
+.fieldBlock {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-row-gap: 10px;
+}
+
+.description {
+    padding: 2px;
+    font-size: 100%;
+    border-radius: 6px;
+}
