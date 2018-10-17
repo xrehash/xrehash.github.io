@@ -9,12 +9,21 @@ export class Thing {
     constructor(title, inflate) {
         if (title instanceof Thing || inflate) {
             let thing = title;
-            this.title = ko.observable(thing.title);
-            this.created = ko.observable(thing.created);
-            this.description = ko.observable(thing.description);
-            this.status = (thing instanceof Thing) ? thing.status : ko.observable(thing.status);
-            this.dateDone = ko.observable(thing.dateDone);
-            this.dueDate = ko.observable(thing.dueDate);
+            if (!(title instanceof Thing)) {
+                this.title = ko.observable(thing.title);
+                this.created = ko.observable(thing.created);
+                this.description = ko.observable(thing.description);
+                this.status = ko.observable(thing.status);
+                this.dateDone = ko.observable(thing.dateDone);
+                this.dueDate = ko.observable(thing.dueDate);
+            } else {
+                this.title = (thing.title);
+                this.created = (thing.created);
+                this.description = (thing.description);
+                this.status = (thing.status);
+                this.dateDone = (thing.dateDone);
+                this.dueDate = (thing.dueDate);
+            }
             this.id = thing.id;
         } else {
             this.id = Date.now();
@@ -124,11 +133,11 @@ export class ThingList extends Thing {
     get Items() {
         return this.items();
     }
-    promptItem(app, data) {
-        //console.log("prompt", data, app);
+    promptItem(lst, app) {
+        console.log("prompt", this, lst, app);
         var newItem = new Thing("Sleep");
-        data.add(newItem);
-        app.edit(newItem, data);
+        this.add(newItem);
+        app.edit(newItem, app);
     };
     trashItem(data, p) {
         //console.log(data,p);

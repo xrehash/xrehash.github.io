@@ -1,6 +1,22 @@
-﻿body {
+﻿@font-face {
+    font-family: 'Open Sans';
+    src: url('lib/OpenSans-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'Ostrich Sans';
+    src: url('lib/OstrichSans-Black.otf');
+}
+
+@font-face {
+    font-family: 'Palanquin';
+    src: url('lib/palanquin-regular.ttf');
+}
+
+body {
     background-color: rgb(224, 240, 236);
-    font-size: 16pt;
+    font-size: 14pt;
+    font-family: 'Open Sans', Arial, Helvetica, sans-serif;
 }
 
 header {
@@ -17,6 +33,11 @@ h4,
 h5,
 h6 {
     margin-top: 0;
+    font-family: 'Ostrich Sans', Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+p {
+    margin: 0;
 }
 
 .main .tbl {
@@ -35,17 +56,24 @@ h6 {
     box-shadow: 10px 5px 5px rgba(80, 80, 66, 0.3);
 }
 
-h3.title {
-    border-bottom: 1px solid rgb(124, 140, 136);
+.title {
+    /* border-bottom: 1px solid rgb(124, 140, 136); */
     margin: 0;
+    font-family: 'Palanquin', sans-serif;
+    font-weight: normal;
 }
 
 .list {
-    margin: 10px;
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-column-gap: 25px;
-    grid-row-gap: 18px;
+    margin: 1px 0px 2px 5px;
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+.status {
+    padding: 2px;
+    text-transform: lowercase;
+    font-family: 'Open Sans', sans-serif;
+    color: rgb(65, 97, 128);
 }
 
 footer {
@@ -58,7 +86,7 @@ button.btn {
     cursor: hand;
     color: rgb(245, 150, 42);
     background-color: rgb(24, 14, 13);
-    font-family: sans-serif;
+    /* font-family: sans-serif; */
 
     /* text-shadow: 1px 1px 2px rgb(180, 228, 46); */
     border-color: rgb(245, 150, 42);
@@ -70,10 +98,11 @@ button.btn:hover {
 }
 
 .thing {
-    border: 1px solid olivedrab;
+    border: 1px solid rgb(7, 99, 136);
     border-radius: 3px;
-    padding: 2px;
-    font-size: 9pt;
+    padding: 0px;
+    margin: 2px 0px;
+    /* font-size: 9pt; */
 }
 
 .thing.marked {
@@ -81,10 +110,14 @@ button.btn:hover {
 }
 
 .thing .title {
-    border-bottom: 1px dotted darkcyan;
+    /*border-bottom: 1px dotted darkcyan;*/
     margin: 0;
-    color: rgb(54, 71, 61);
+    padding: 3px;
+    color: white;
+    /* font-weight: 300; */
 }
+
+.thingLayout {}
 
 .minimal {
     font-size: 60%;
@@ -102,14 +135,34 @@ button.btn:hover {
     padding: 5px;
 }
 
-.btn,
+.thing .action {
+    margin: 0;
+    display: grid;
+    grid-template-columns: auto 20px repeat(5, 20px);
+    grid-column-gap: 4px;
+    align-items: center;
+    background-color: rgb(65, 97, 128);
+    font-size: 13pt;
+    color: rgb(117, 129, 151);
+}
+
+.heading {
+    margin: 0;
+    display: grid;
+    grid-template-columns: auto 80px;
+    grid-column-gap: 4px;
+    align-items: center;
+    border-bottom: 2px double dodgerblue;
+}
+
+/*.btn,
 .action i {
     display: inline-block;
     margin: 1px;
     padding: 2px;
     border-radius: 4px;
     font-size: 12pt;
-}
+}*/
 
 i.fa {
     text-align: center;
@@ -125,7 +178,7 @@ i.fa {
 }
 
 i.fa:hover {
-    color: rgb(183, 26, 223);
+    color: rgb(255, 255, 255);
 }
 
 i.undisplayed {
